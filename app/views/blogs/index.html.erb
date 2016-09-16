@@ -1,0 +1,29 @@
+<h1>Welcome to Shawn's Blogs</h1>
+<p>The best blogs online</p>
+
+<table border ="solid black 1px">
+
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.title%></td>
+      <td><%= blog.content%></td>
+      <td><%= blog.owner %></td>
+      <td><%= link_to "show", blog_path(blog) %></td>
+      <td><%= link_to "edit", edit_blog_path(blog) %></td>
+      <td><%= link_to "delete", blog_path(blog[:id]), method: :delete, data: {confirm: "Are you sure"} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<%= link_to 'New Blog', new_blog_path %>
+<!-- I need to add a link to the about page but I am unsure how, there is no visible route? -->
